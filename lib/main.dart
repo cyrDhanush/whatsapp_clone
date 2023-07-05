@@ -1,6 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:whatsapp_clone/screens/homescreen.dart';
+import 'package:whatsapp_clone/theme/darktheme.dart';
+import 'package:whatsapp_clone/theme/lighttheme.dart';
+import 'package:whatsapp_clone/theme/thememodal.dart';
 
 void main() {
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    statusBarBrightness: Brightness.light,
+    statusBarColor: Colors.white.withAlpha(0),
+  ));
+  theme = lightTheme;
+  // theme = darkTheme;
   runApp(const MyApp());
 }
 
@@ -9,6 +20,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp();
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        useMaterial3: true,
+        colorSchemeSeed: theme.maincolor,
+        appBarTheme: AppBarTheme(
+          backgroundColor: theme.maincolor,
+        ),
+        scaffoldBackgroundColor: theme.scaffoldColor,
+      ),
+      home: HomeScreen(),
+    );
   }
 }
