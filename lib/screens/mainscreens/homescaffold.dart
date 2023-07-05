@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_clone/screens/mainscreens/calllist.dart';
+import 'package:whatsapp_clone/screens/mainscreens/chatlist.dart';
+import 'package:whatsapp_clone/screens/mainscreens/statuslist.dart';
+import 'package:whatsapp_clone/theme/darktheme.dart';
+import 'package:whatsapp_clone/theme/lighttheme.dart';
 import 'package:whatsapp_clone/theme/thememodal.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -15,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen>
   void initState() {
     // TODO: implement initState
     super.initState();
-    tabController = TabController(length: 2, vsync: this);
+    tabController = TabController(length: 3, vsync: this);
   }
 
   @override
@@ -24,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen>
       appBar: AppBar(
         elevation: 0,
         title: Text(
-          'Whatsapp',
+          'WhatsApp',
           style: theme.body1.copyWith(
             fontSize: 20,
             color: theme.subonmaincolor,
@@ -60,14 +65,9 @@ class _HomeScreenState extends State<HomeScreen>
           dividerColor: Colors.white.withAlpha(0),
           labelColor: theme.indicatorColor,
           unselectedLabelColor: theme.subonmaincolor,
-          labelStyle: TextStyle(
-            fontSize: 16,
-            color: theme.indicatorColor,
-          ),
-          unselectedLabelStyle: TextStyle(
-            fontSize: 14,
-            color: theme.subonmaincolor,
-          ),
+          splashBorderRadius: BorderRadius.circular(12),
+          labelStyle: theme.body1,
+          unselectedLabelStyle: theme.body2,
           tabs: [
             Tab(
               text: 'Chats',
@@ -75,8 +75,20 @@ class _HomeScreenState extends State<HomeScreen>
             Tab(
               text: 'Status',
             ),
+            Tab(
+              text: 'Calls',
+            ),
           ],
         ),
+      ),
+      body: TabBarView(
+        controller: tabController,
+        physics: BouncingScrollPhysics(),
+        children: [
+          ChatList(),
+          StatusList(),
+          CallList(),
+        ],
       ),
     );
   }

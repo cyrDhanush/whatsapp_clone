@@ -8,6 +8,7 @@ class ThemeModel {
   final Color maincolor;
   final Color accentcolor;
   final Color subonmaincolor;
+  final Color subonbg;
   final Color scaffoldColor;
   final Color indicatorColor;
 
@@ -17,16 +18,19 @@ class ThemeModel {
 
   final TextStyle body1;
   final TextStyle body2;
+  final TextStyle body3;
 
   ThemeModel({
     required this.maincolor,
     required this.accentcolor,
     required this.subonmaincolor,
+    required this.subonbg,
     required this.scaffoldColor,
     required this.indicatorColor,
     required this.head1,
     required this.head2,
     required this.body1,
     required this.body2,
+    required this.body3,
   });
 }

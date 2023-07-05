@@ -1,29 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/theme/colors.dart';
+import 'package:whatsapp_clone/theme/textstyles.dart';
 import 'package:whatsapp_clone/theme/thememodal.dart';
 
 ThemeModel darkTheme = ThemeModel(
   maincolor: darkfg,
   accentcolor: darkgreen,
-  subonmaincolor: Colors.white.withAlpha(150),
+  subonmaincolor: Colors.white.withAlpha(120),
+  subonbg: Colors.white.withAlpha(120),
   scaffoldColor: darkbg,
   indicatorColor: darkgreen,
-  head1: TextStyle(
-    fontSize: 20,
-    fontWeight: FontWeight.bold,
+  head1: head1.copyWith(
     color: white,
   ),
-  head2: TextStyle(
-    fontSize: 16,
-    fontWeight: FontWeight.bold,
+  head2: head2.copyWith(
     color: white,
   ),
-  body1: TextStyle(
-    fontSize: 16,
+  body1: body1.copyWith(
     color: white,
   ),
-  body2: TextStyle(
-    fontSize: 14,
+  body2: body2.copyWith(
+    color: white,
+  ),
+  body3: body3.copyWith(
     color: white,
   ),
 );
