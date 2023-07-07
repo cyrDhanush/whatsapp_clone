@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_clone/models/messagemodel.dart';
 import 'package:whatsapp_clone/theme/thememodal.dart';
 
 class ChatTextbox extends StatefulWidget {
-  const ChatTextbox({super.key});
+  final Function? onSend;
+  const ChatTextbox({super.key, this.onSend});
 
   @override
   State<ChatTextbox> createState() => _ChatTextboxState();
@@ -11,6 +13,36 @@ class ChatTextbox extends StatefulWidget {
 class _ChatTextboxState extends State<ChatTextbox> {
   TextEditingController textboxcontroller = TextEditingController();
   double msglines = 0;
+
+  onClick() {
+    String text = textboxcontroller.text;
+    text = text.trim();
+    if (text.length != 0) {
+      if (widget.onSend != null) {
+        MessageModel model = MessageModel(message: text);
+        widget.onSend!(model);
+      }
+    }
+    textboxcontroller.text = '';
+    setState(() {});
+  }
+
+  msgOpp() {
+    String text = textboxcontroller.text;
+    text = text.trim();
+    if (text.length != 0) {
+      if (widget.onSend != null) {
+        MessageModel model = MessageModel(
+          message: text,
+          isSelf: false,
+        );
+        widget.onSend!(model);
+      }
+    }
+    textboxcontroller.text = '';
+    setState(() {});
+  }
+
   lineCounter() {
     int lc = 0;
     String text = textboxcontroller.text.trim();
@@ -45,7 +77,9 @@ class _ChatTextboxState extends State<ChatTextbox> {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      msgOpp();
+                    },
                     icon: Icon(
                       Icons.emoji_emotions,
                       color: theme.subonbg,
@@ -135,7 +169,7 @@ class _ChatTextboxState extends State<ChatTextbox> {
             child: FloatingActionButton(
               elevation: 0,
               onPressed: () {
-                print(msglines);
+                onClick();
               },
               backgroundColor: theme.fabbg,
               shape: const CircleBorder(),

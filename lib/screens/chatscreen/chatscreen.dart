@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_clone/models/messagemodel.dart';
 import 'package:whatsapp_clone/screens/chatscreen/widgets/chattextbox.dart';
 import 'package:whatsapp_clone/theme/colors.dart';
 import 'package:whatsapp_clone/theme/thememodal.dart';
@@ -12,10 +13,32 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
+  ScrollController scrollController = ScrollController();
+  List<MessageModel> messages = [
+    MessageModel(message: 'The First Message'),
+  ];
+
+  _scrolldown() {
+    // if (scrollController.hasClients == true) {
+    //   scrollController.jumpTo(scrollController.position.maxScrollExtent);
+    // }
+    scrollController.jumpTo(scrollController.position.maxScrollExtent + 100);
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      _scrolldown();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        scrolledUnderElevation: 0,
         automaticallyImplyLeading: false,
         flexibleSpace: SafeArea(
           child: Column(
@@ -62,6 +85,8 @@ class _ChatScreenState extends State<ChatScreen> {
                       child: Text(
                         'Name of the Person',
                         textAlign: TextAlign.left,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                         style: theme.body1.copyWith(
                           color: white,
                         ),
@@ -117,14 +142,26 @@ class _ChatScreenState extends State<ChatScreen> {
           child: Column(
             children: [
               Expanded(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    ChatMessageBox(),
-                  ],
+                child: ListView.builder(
+                  controller: scrollController,
+                  padding: EdgeInsets.symmetric(vertical: 10),
+                  itemCount: messages.length,
+                  physics: BouncingScrollPhysics(),
+                  itemBuilder: (context, i) {
+                    return ChatMessageBox(
+                      message: messages[i].message,
+                      selfmsg: messages[i].isSelf!,
+                    );
+                  },
                 ),
               ),
-              ChatTextbox(),
+              ChatTextbox(
+                onSend: (MessageModel msg) {
+                  messages.add(msg);
+                  setState(() {});
+                  _scrolldown();
+                },
+              ),
             ],
           ),
         ),

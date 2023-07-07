@@ -16,6 +16,7 @@ class ThemeModel {
   final Color msgbg; // color for message from me
   final Color oppmsgbg; // color for message from 2nd person
   final Color fabbg;
+  final Color subfab;
 
   /// text styles
   final TextStyle head1;
@@ -24,6 +25,7 @@ class ThemeModel {
   final TextStyle body1;
   final TextStyle body2;
   final TextStyle body3;
+  final TextStyle body4;
 
   ThemeModel({
     required this.themename,
@@ -34,6 +36,7 @@ class ThemeModel {
     required this.scaffoldColor,
     required this.indicatorColor,
     required this.fabbg,
+    required this.subfab,
     required this.oppmsgbg,
     required this.msgbg,
     required this.head1,
@@ -41,5 +44,6 @@ class ThemeModel {
     required this.body1,
     required this.body2,
     required this.body3,
+    required this.body4,
   });
 }

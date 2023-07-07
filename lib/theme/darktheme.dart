@@ -14,6 +14,7 @@ ThemeModel darkTheme = ThemeModel(
   msgbg: msggreen,
   oppmsgbg: darkfg,
   fabbg: darkgreen,
+  subfab: darkfg,
   head1: head1.copyWith(
     color: white,
   ),
@@ -27,6 +28,9 @@ ThemeModel darkTheme = ThemeModel(
     color: white,
   ),
   body3: body3.copyWith(
+    color: white,
+  ),
+  body4: body4.copyWith(
     color: white,
   ),
 );

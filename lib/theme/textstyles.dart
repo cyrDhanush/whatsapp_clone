@@ -17,3 +17,6 @@ TextStyle body2 = TextStyle(
 TextStyle body3 = TextStyle(
   fontSize: 14,
 );
+TextStyle body4 = TextStyle(
+  fontSize: 12,
+);
