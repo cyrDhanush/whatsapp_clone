@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/screens/mainscreens/calllist.dart';
 import 'package:whatsapp_clone/screens/mainscreens/chatlist.dart';
 import 'package:whatsapp_clone/screens/mainscreens/statuslist.dart';
+import 'package:whatsapp_clone/screens/settingsscreen.dart';
 import 'package:whatsapp_clone/theme/darktheme.dart';
 import 'package:whatsapp_clone/theme/lighttheme.dart';
 import 'package:whatsapp_clone/theme/thememodal.dart';
@@ -31,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen>
         title: Text(
           'WhatsApp',
           style: theme.body1.copyWith(
-            fontSize: 20,
+            fontSize: 22,
             color: theme.subonmaincolor,
           ),
         ),
@@ -51,7 +52,10 @@ class _HomeScreenState extends State<HomeScreen>
             ),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => SettingScreen()));
+            },
             icon: Icon(
               Icons.more_vert_rounded,
               color: theme.subonmaincolor,

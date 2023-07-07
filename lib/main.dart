@@ -2,16 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:whatsapp_clone/screens/chatscreen/chatscreen.dart';
 import 'package:whatsapp_clone/screens/mainscreens/homescaffold.dart';
+import 'package:whatsapp_clone/screens/settingsscreen.dart';
 import 'package:whatsapp_clone/theme/darktheme.dart';
 import 'package:whatsapp_clone/theme/lighttheme.dart';
+import 'package:whatsapp_clone/theme/themehelper.dart';
 import 'package:whatsapp_clone/theme/thememodal.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     statusBarBrightness: Brightness.light,
     statusBarColor: Colors.white.withAlpha(0),
   ));
-  theme = lightTheme;
+  await ThemeHelper.initialize();
+  // theme = lightTheme;
   // theme = darkTheme;
   runApp(const MyApp());
 }
@@ -34,6 +38,7 @@ class MyApp extends StatelessWidget {
       ),
       home: HomeScreen(),
       // home: ChatScreen(),
+      // home: SettingScreen(),
     );
   }
 }
