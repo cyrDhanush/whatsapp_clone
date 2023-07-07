@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_clone/screens/chatscreen/chatscreen.dart';
 import 'package:whatsapp_clone/theme/thememodal.dart';
 
 class ChatTile extends StatelessWidget {
@@ -7,7 +8,10 @@ class ChatTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () {},
+      onPressed: () {
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => ChatScreen()));
+      },
       style: TextButton.styleFrom(
         padding: EdgeInsets.symmetric(vertical: 3, horizontal: 15),
         foregroundColor: theme.subonbg,

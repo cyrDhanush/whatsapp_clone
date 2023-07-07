@@ -4,12 +4,16 @@ import 'package:whatsapp_clone/theme/textstyles.dart';
 import 'package:whatsapp_clone/theme/thememodal.dart';
 
 ThemeModel lightTheme = ThemeModel(
+  themename: 'light',
   maincolor: lightfg,
   accentcolor: whdgreen,
   subonmaincolor: Colors.white,
   subonbg: black.withAlpha(120),
   scaffoldColor: white,
   indicatorColor: white,
+  msgbg: whyellow,
+  oppmsgbg: white,
+  fabbg: lightfg,
   head1: head1.copyWith(
     color: black,
   ),
